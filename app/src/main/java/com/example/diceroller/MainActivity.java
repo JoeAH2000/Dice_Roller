@@ -17,7 +17,6 @@ import android.widget.TextView;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +55,13 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    public int score = 0;
 
     public void on_button_click(View view){
+
         TextView tv = this.findViewById(R.id.numberTextView);
         TextView ctv = this.findViewById(R.id.congratTextView);
+        TextView stv = this.findViewById(R.id.scoreTextView);
         EditText et = this.findViewById(R.id.guessText);
         String userGuess = et.getText().toString();
         int userGuessInt = Integer.parseInt(userGuess);
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             tv.setText(Integer.toString(number));
             if(userGuessInt == number){
                 ctv.setText("Congrats");
+                score = score + 1;
             }
             else {
                 ctv.setText("Wrong!");
@@ -78,6 +81,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception ex){
             tv.setText(ex.toString());
         }
-
+        stv.setText(Integer.toString(score));
     }
 }
