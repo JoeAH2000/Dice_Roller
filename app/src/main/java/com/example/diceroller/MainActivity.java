@@ -57,8 +57,15 @@ public class MainActivity extends AppCompatActivity {
     }
     public int score = 0;
 
-    public void on_button_click(View view){
+    int number;
 
+    public void roll_the_dice() {
+
+        Random r = new Random();
+        number = r.nextInt(6);
+
+    }
+    public void on_button_click(View view){
         TextView tv = this.findViewById(R.id.numberTextView);
         TextView ctv = this.findViewById(R.id.congratTextView);
         TextView stv = this.findViewById(R.id.scoreTextView);
@@ -66,8 +73,7 @@ public class MainActivity extends AppCompatActivity {
         String userGuess = et.getText().toString();
         int userGuessInt = Integer.parseInt(userGuess);
 
-        Random r = new Random();
-        int number = r.nextInt(6);
+        roll_the_dice();
 
         try {
             tv.setText(Integer.toString(number));
@@ -81,6 +87,39 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception ex){
             tv.setText(ex.toString());
         }
+
+
         stv.setText(Integer.toString(score));
+    }
+
+    public void on_button2_click(View view){
+        TextView tv = this.findViewById(R.id.numberTextView);
+
+        String q1 = ("If you could go anywhere in the world, where would you go?");
+        String q2 = ("If you where stranded on a desert island, what three things would you want to take with you?");
+        String q3 = ("If you could eat only one food for the rest of your life, what would it be?");
+        String q4 = ("If you won a million dollars, what is the first thing you would buy?");
+        String q5 = ("If you could spend the day with one fictional character, who would it be?");
+        String q6 = ("If you found a magic lantern and a gene gave you three wishes, what would you wish?");
+
+        roll_the_dice();
+        if(number == 1){
+            tv.setText(q1);
+        }
+        else if(number == 2){
+            tv.setText(q2);
+        }
+        else if(number == 3) {
+            tv.setText(q3);
+        }
+        else if(number == 4){
+            tv.setText(q4);
+        }
+        else if(number == 5){
+            tv.setText(q5);
+        }
+        else if(number == 6){
+            tv.setText(q6);
+        }
     }
 }
