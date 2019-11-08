@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     public void roll_the_dice() {
 
         Random r = new Random();
-        number = r.nextInt(6);
+        number = (r.nextInt(6)+1);
 
     }
     public void on_button_click(View view){
@@ -94,32 +96,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void on_button2_click(View view){
         TextView tv = this.findViewById(R.id.numberTextView);
+        TextView ctv = this.findViewById(R.id.congratTextView);
+        ctv.setText("");
 
-        String q1 = ("If you could go anywhere in the world, where would you go?");
-        String q2 = ("If you where stranded on a desert island, what three things would you want to take with you?");
-        String q3 = ("If you could eat only one food for the rest of your life, what would it be?");
-        String q4 = ("If you won a million dollars, what is the first thing you would buy?");
-        String q5 = ("If you could spend the day with one fictional character, who would it be?");
-        String q6 = ("If you found a magic lantern and a gene gave you three wishes, what would you wish?");
+
+        List<String> qlist = new ArrayList<>();
+        qlist.add("If you could go anywhere in the world, where would you go?");
+        qlist.add("If you where stranded on a desert island, what three things would you want to take with you?");
+        qlist.add("If you could eat only one food for the rest of your life, what would it be?");
+        qlist.add("If you won a million dollars, what is the first thing you would buy?");
+        qlist.add("If you could spend the day with one fictional character, who would it be?");
+        qlist.add("If you found a magic lantern and a gene gave you three wishes, what would you wish?");
 
         roll_the_dice();
-        if(number == 1){
-            tv.setText(q1);
-        }
-        else if(number == 2){
-            tv.setText(q2);
-        }
-        else if(number == 3) {
-            tv.setText(q3);
-        }
-        else if(number == 4){
-            tv.setText(q4);
-        }
-        else if(number == 5){
-            tv.setText(q5);
-        }
-        else if(number == 6){
-            tv.setText(q6);
+        tv.setText(qlist.get(number-1));
+
         }
     }
-}
