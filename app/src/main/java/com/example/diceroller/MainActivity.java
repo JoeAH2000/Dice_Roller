@@ -19,6 +19,11 @@ import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+    public int score = 0;
+    public List<String> qlist = new ArrayList<>();
+
+    int number;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public int score = 0;
 
-    int number;
 
     public void roll_the_dice() {
 
@@ -67,16 +70,24 @@ public class MainActivity extends AppCompatActivity {
         number = (r.nextInt(6)+1);
 
     }
-    public void on_button_click(View view){
+    public void btnLucky_Click(View view){
         TextView tv = this.findViewById(R.id.numberTextView);
         TextView ctv = this.findViewById(R.id.congratTextView);
         TextView stv = this.findViewById(R.id.scoreTextView);
         EditText et = this.findViewById(R.id.guessText);
+
         String userGuess = et.getText().toString();
         int userGuessInt = Integer.parseInt(userGuess);
 
         roll_the_dice();
 
+        Congratulations(tv, ctv, userGuessInt);
+
+
+        stv.setText(Integer.toString(score));
+    }
+
+    public void Congratulations(TextView tv, TextView ctv, int userGuessInt) {
         try {
             tv.setText(Integer.toString(number));
             if(userGuessInt == number){
@@ -89,27 +100,27 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception ex){
             tv.setText(ex.toString());
         }
-
-
-        stv.setText(Integer.toString(score));
     }
 
-    public void on_button2_click(View view){
+    public void BtnIceBreaker_click(View view){
         TextView tv = this.findViewById(R.id.numberTextView);
         TextView ctv = this.findViewById(R.id.congratTextView);
         ctv.setText("");
 
 
-        List<String> qlist = new ArrayList<>();
+        initialise();
+
+        roll_the_dice();
+        tv.setText(qlist.get(number-1));
+
+        }
+
+    private void initialise() {
         qlist.add("If you could go anywhere in the world, where would you go?");
         qlist.add("If you where stranded on a desert island, what three things would you want to take with you?");
         qlist.add("If you could eat only one food for the rest of your life, what would it be?");
         qlist.add("If you won a million dollars, what is the first thing you would buy?");
         qlist.add("If you could spend the day with one fictional character, who would it be?");
         qlist.add("If you found a magic lantern and a gene gave you three wishes, what would you wish?");
-
-        roll_the_dice();
-        tv.setText(qlist.get(number-1));
-
-        }
     }
+}
