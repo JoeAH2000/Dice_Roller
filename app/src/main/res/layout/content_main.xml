@@ -48,10 +48,10 @@
         app:layout_constraintVertical_bias="0.652" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnLucky"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="on_button_click"
+        android:onClick="btnLucky_Click"
         android:text="I am feeling lucky"
         app:layout_constraintBottom_toTopOf="@+id/numberTextView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,10 +61,10 @@
         app:layout_constraintVertical_bias="0.644" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnIceBreaker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="on_button2_click"
+        android:onClick="BtnIceBreaker_click"
         android:text="Let's play D-ICEBREAKERS"
         app:layout_constraintBottom_toTopOf="@+id/numberTextView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +75,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="161dp"
         android:layout_height="75dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btnLucky"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
